@@ -1,4 +1,5 @@
-import smbus2
+#import smbus2
+import smbus
 import time
 
 
@@ -116,11 +117,11 @@ NAU7802_CAL_FAILURE = 2
 ###########################################
 class NAU7802:
     """ Class to communicate with the NAU7802 """
-    _i2cPort: smbus2.SMBus = None
+    _i2cPort: smbus.SMBus = None
     _zeroOffset: int = 0
     _calibrationFactor: float = 1.0
 
-    def begin(self, wire_port: smbus2.SMBus = smbus2.SMBus(1), initialize: bool = True) -> bool:
+    def begin(self, wire_port: smbus.SMBus = smbus.SMBus(1), initialize: bool = True) -> bool:
         """ Check communication and initialize sensor """
         # Get user's options
         self._i2cPort = wire_port
